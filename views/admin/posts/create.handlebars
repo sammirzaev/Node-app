@@ -1,0 +1,50 @@
+<h1>Create Post</h1>
+
+{{#each errors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{message}}</strong> 
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+  
+{{/each}}
+<form action="/admin/posts/create" method="post" enctype="multipart/form-data">
+  <div class="form-group">
+      <label for="title">Title</label>
+      <input name="title" required type="text" class="form-control" id="title" placeholder="Enter title...">
+  </div>
+  <div class="form-group">
+      <label for="title">Upload File</label>
+      <input name="file" type="file" class="form-control">
+  </div>
+  <div class="form-group">
+      <label for="category">Category</label>
+      <select name="category" id="category" class="form-control">
+       {{#each categories}}
+            <option value="{{id}}">{{name}}</option>
+        {{/each}}
+         
+      </select>
+   </div>  
+  <div class="form-group">
+      <label for="status">Status</label>
+      <select name="status" id="status" class="form-control">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+            <option value="draft">Draft</option>
+      </select>
+   </div>
+   <div class="form-check mr-5">
+      <label for="allowComments">
+      <input class="mr-1" name="allowComments" type="checkbox" class="form-check-input" id="allowComments">
+      Allow Comments
+      </label>
+  </div>
+  <div class="form-group">
+      <label for="body">Body</label>
+      <textarea required name="body" cols="30" rows="10" class="form-control" id="body" placeholder="Enter Description..."></textarea>
+  </div>
+      
+  <button class="btn btn-primary mt-3" type="submit">Create Post</button>
+</form>

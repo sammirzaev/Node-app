@@ -1,0 +1,36 @@
+    <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+          <h1 class="my-4">iDubai
+            <small>Bloggers</small>
+          </h1>
+        {{#each posts}}
+          <!-- Blog Post -->
+          <div class="card mb-4">
+            <img class="card-img-top img-responsive" src="uploads/{{file}}" alt="Photo coming soon!">
+            <div class="card-body">
+              <h2 class="card-title">{{title}}</h2>
+              <p class="card-text">{{body}}</p>
+              <a href="/blog-post/{{slug}}" class="btn btn-primary">Read More &rarr;</a>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{generateTime date 'MMMM Do YYYY'}} 
+            </div>
+          </div>
+          {{/each}}
+          <!-- Pagination -->
+
+         
+          <ul class="pagination justify-content-center mb-4">
+            {{#paginate current=current pages=pages}}{{/paginate}}
+          </ul>
+
+           
+
+        </div>
+
+       {{> home/sidebar}}
+        </div>
+      <!-- /.row -->

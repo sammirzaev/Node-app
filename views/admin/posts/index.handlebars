@@ -1,0 +1,39 @@
+<h1>All posts</h1>
+
+<table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+          <th>Id</th>
+          <th>Image</th>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Category</th>
+          <th>Allow Comments</th>
+          <th class="text-center">View Posts</th>
+          <th>Date</th>
+      </tr>
+  </thead>
+  <tbody>
+      {{#each Post}} <!--like foreach loop # means start / means end loop-->
+      <tr>
+          <td>{{id}}</td>
+          <td><img width="80" height="60" class="img-responsive" src="/uploads/{{file}}"></td>
+          <td>{{title}}</td>
+          <td>{{status}}</td>
+          <td>{{category.name}}</td>
+          <td>{{allowComments}}</td>
+          <td class="text-center"><a href="/blog-post/{{slug}}"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+          <td>{{generateTime date 'MMMM Do YYYY'}}</td>
+      </tr>
+      {{/each}}
+  </tbody>
+</table>
+<div class="container">
+    <div class="row">
+      <div class="col-md-10">
+      <ul class="pagination justify-content-center mb-4">
+                {{#paginate current=current pages=pages}}{{/paginate}}
+      </ul>
+      </div>
+    </div>
+</div>
